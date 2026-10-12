@@ -1,10 +1,7 @@
 # My calculator submission
 
-Replace these prompts with your own short explanations.
 
 ## Setup, run, and test
-
-Write the commands for your completed project.
 
 This project is a Python command-line calculator that supports addition, subtraction, multiplication, division, and calculation history. It uses object-oriented programming and the Factory, Command, and Strategy patterns.
 
@@ -20,13 +17,10 @@ python -m calculator
 
 To run the tests and check coverage:
 
-python -m pytest --cov=calculator --cov-report=term-missing --ail-under=100
-
+python -m pytest --cov=calculator --cov-report=term-missing --cov-fail-under=100
 
 
 ## Example conversation
-
-Show arithmetic, history, an error, and exit.
 
 > add 5 3
 8.0
@@ -45,13 +39,12 @@ divide 10 2 = 5.0
 Cannot divide by zero
 > exit
 
+
 The calculator keeps running until the user enters exit. It also handles invalid commands and numbers without stopping the program. Only successful calculations are added to history.
 
 
 
 ## Static, class, and instance methods
-
-Explain each using your own method names.
 
 Static methods: The Operations class uses static methods for addition, subtraction, multiplication, and division because they only need the two numbers given to them.
 
@@ -62,8 +55,6 @@ Instance methods: The execute() method in ArithmeticCalculation uses self to acc
 
 
 ## Factory, Command, and Strategy
-
-Trace `add 5 3` through your code.
 
 Factory: The ArithmeticCalculation.create() method creates calculation objects. For example, it can create a calculation using the numbers 5 and 3 and the addition operation.
 
@@ -76,8 +67,6 @@ For example, when the user enters add 5 3, the CLI selects Operations.add from t
 
 
 ## OOP
-
-Explain encapsulation, abstraction, inheritance, polymorphism, and composition with examples from your code.
 
 Encapsulation: The Calculation class keeps the numbers and selected operation together in one object. HistoryCommand also protects the history by returning a copy of the list instead of the original.
 
@@ -92,8 +81,6 @@ Composition: CalculateCommand contains a calculation object, and the calculation
 
 
 ## SOLID
-
-Give one short example for each principle. Describe adding another operation without changing calculation execution.
 
 Single Responsibility: Each part has its own job. Operations handles arithmetic, Calculation stores the calculation details, and the CLI handles user input and output.
 
@@ -111,8 +98,6 @@ Adding subtraction, multiplication, and division did not require changing Arithm
 
 ## Tests and GitHub Actions
 
-Add your successful Actions run URL and confirm 100% line coverage.
-
 I used pytest to test arithmetic operations, calculation objects, commands, history, and the CLI. The tests also cover invalid input, division by zero, negative numbers, decimals, exit, and EOF.
 
 All 34 tests passed with 100% line coverage.
@@ -124,10 +109,8 @@ https://github.com/jasdeepn24/is218-calculator-patterns/actions/runs/38261628400
 
 ## Coverage exclusions
 
-The starter excludes the abstract `Calculation.execute()` placeholder because it declares the contract and supplies no implementation. List and explain any other exclusions you add.
-
 The starter code uses # pragma: no cover on the abstract Calculation.execute() placeholder because it only defines a required method and does not perform an actual calculation.
 
-The starter also excludes the if __name__ == "__main__" condition in __main__.py, which is only responsible for starting the program. The CLI startup was still tested using runpy.
+I also used # pragma: no cover on the startup condition in __main__.py because it only starts the calculator. The startup code is still tested using runpy.
 
 No other coverage exclusions were added.
