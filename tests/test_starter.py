@@ -57,3 +57,19 @@ def test_divide(a, b, expected):
 def test_divide_by_zero():
     with pytest.raises(ValueError, match="Cannot divide by zero"):
         Operations.divide(5, 0)
+
+
+
+def test_factory_with_subtraction():
+    calculation = ArithmeticCalculation.create(10, 4, Operations.subtract)
+    assert calculation.execute() == 6
+
+
+def test_factory_with_multiplication():
+    calculation = ArithmeticCalculation.create(5, 3, Operations.multiply)
+    assert calculation.execute() == 15
+
+
+def test_factory_with_division():
+    calculation = ArithmeticCalculation.create(10, 2, Operations.divide)
+    assert calculation.execute() == 5
